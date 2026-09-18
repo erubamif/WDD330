@@ -133,6 +133,29 @@ button {
 
 /* End cart icon styles */
 
+/* Cart icon add-animation */
+.cart.bump svg {
+  animation: cartBump 0.5s ease;
+}
+
+@keyframes cartBump {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.35) rotate(-10deg);
+  }
+  50% {
+    transform: scale(0.9) rotate(8deg);
+  }
+  75% {
+    transform: scale(1.15) rotate(-4deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
 .mission {
   position: absolute;
   top: 1rem;
