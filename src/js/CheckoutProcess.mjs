@@ -95,3 +95,4 @@ export default class CheckoutProcess {
     return externalServices.checkout(order);
   }
 }
+
