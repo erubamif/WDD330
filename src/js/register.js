@@ -14,7 +14,6 @@ form.addEventListener("submit", async (event) => {
     name: formData.get("name"),
     address: formData.get("address"),
     email: formData.get("email"),
-    password: formData.get("password"),
   };
 
   try {
@@ -26,6 +25,7 @@ form.addEventListener("submit", async (event) => {
     form.reset();
   } catch (error) {
     console.error("Registration failed:", error);
+
   message.textContent = `Registration failed: ${error.message}`;
 }
 });
