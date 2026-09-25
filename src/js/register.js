@@ -1,0 +1,32 @@
+import ExternalServices from "./ExternalServices.mjs";
+
+const form = document.querySelector("#registration-form");
+const message = document.querySelector("#registration-message");
+
+const services = new ExternalServices();
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(form);
+
+  const user = {
+    name: formData.get("name"),
+    address: formData.get("address"),
+    email: formData.get("email"),
+    password: formData.get("password"),
+  };
+
+  try {
+    const response = await services.registerUser(user);
+
+    console.log("Registration successful:", response);
+
+    message.textContent = "Account created successfully!";
+    form.reset();
+  } catch (error) {
+    console.error("Registration failed:", error);
+  message.textContent = `Registration failed: ${error.message}`;
+}
+});
+
