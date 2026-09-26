@@ -1,33 +1,83 @@
-import ExternalServices from "./ExternalServices.mjs";
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-const form = document.querySelector("#registration-form");
-const message = document.querySelector("#registration-message");
+    <title>Sleep Outside | Create Account</title>
 
-const services = new ExternalServices();
+    <link rel="stylesheet" href="/css/style.css" />
 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
+    <script src="../js/register.js" type="module"></script>
+  </head>
 
-  const formData = new FormData(form);
+  <body>
+    <header class="divider">
+      <div class="logo">
+        <img
+          src="/images/noun_Tent_2517.svg"
+          alt="tent image for logo"
+        />
+        <a href="/index.html">
+          Sleep<span class="highlight">Outside</span>
+        </a>
+      </div>
 
-  const user = {
-    name: formData.get("name"),
-    address: formData.get("address"),
-    email: formData.get("email"),
-    password: formData.get("password"),
-  };
+      <nav class="site-nav">
+        <a href="/index.html">Home</a>
+        <a href="/register/">Register</a>
+        <a href="../cart/index.html">Cart</a>
+      </nav>
+    </header>
 
-  console.log("User data being sent:", user);
+    <main class="divider">
+      <section class="registration">
+        <h1>Create an Account</h1>
 
-  try {
-    const response = await services.registerUser(user);
+        <form id="registration-form">
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+          />
 
-    console.log("Registration successful:", response);
+          <label for="address">Address</label>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            required
+          />
 
-    message.textContent = "Account created successfully!";
-    form.reset();
-  } catch (error) {
-    console.error("Registration failed:", error);
-    message.textContent = `Registration failed: ${error.message}`;
-  }
-});
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+          />
+
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+          />
+
+          <button type="submit" class="button">
+            Create Account
+          </button>
+        </form>
+
+        <p id="registration-message"></p>
+      </section>
+    </main>
+
+    <footer>
+      &copy; NOT a real business
+    </footer>
+  </body>
+</html>
